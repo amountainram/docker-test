@@ -41,9 +41,6 @@ jobs:
             -v `pwd`/csp.html:/usr/static/csp.html \
             ${{ steps.prepare-docker-container.outputs.tag }}
 
-          netstat -tunlp | grep LISTEN
-          cat /etc/hosts
-          
           curl --fail "http://localhost:8080/index.html" --connect-timeout 2
           
           CSP=$(curl --fail "http://localhost:8080/csp.html" --connect-timeout 2)
